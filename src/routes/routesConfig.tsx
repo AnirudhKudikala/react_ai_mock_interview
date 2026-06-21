@@ -18,12 +18,12 @@ export interface AppRoute {
 
 const routesConfig: AppRoute[] = [
     {
-        path: "/sign-in",
+        path: "/sign-in/*",
         element: <SignInPage />,
         isProtected: false,
     },
     {
-        path: "/sign-up",
+        path: "/sign-up/*",
         element: <SignUpPage />,
         isProtected: false,
     },
