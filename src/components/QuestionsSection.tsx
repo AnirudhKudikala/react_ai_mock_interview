@@ -28,6 +28,10 @@ function QuestionsSection({interviewQuestions, activeQuestionIndex}: QuestionsSe
         {interviewQuestions?.map((_, index: number) => (
           <h2
             key={index}
+            style={{
+                color: activeQuestionIndex === index ? "#4845D2" : undefined,
+                textDecoration: activeQuestionIndex === index ? "underline" : undefined
+            }}
             className={`p-2 rounded-full text-xs md:text-sm text-center
               ${
                 activeQuestionIndex === index

@@ -12,13 +12,13 @@ function InterviewItemCard({interview}: InterviewItemCardProps) {
         <h2 className='font-bold text-primary'>{interview?.jobPosition}</h2>
         <h2 className='text-sm text-gray-600'>{interview?.jobExperience}</h2>
         <h2 className='text-xs text-gray-500'>Created At: {interview?.createdAt}</h2>
-        <div className='flex justify-between mt-2 gap-5'>
+        <div className='flex justify-end mt-2 gap-5'>
             <Link to={`/interview/${interview?.mockId}/feedback`}>
                 <Button size="sm" style={{backgroundColor: "#4845D2", color: "white"}} className="w-full">Feedback</Button>
             </Link>
-            <Link to={`/interview/${interview?.mockId}`}>
+            {/* <Link to={`/interview/${interview?.mockId}`}>
                 <Button size="sm" variant='outline' className="w-full">Start</Button>
-            </Link>
+            </Link> */}
         </div>
     </div>
   )

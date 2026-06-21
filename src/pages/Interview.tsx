@@ -52,7 +52,7 @@ function Interview() {
   }
 
   return (
-    <div className="my-10">
+    <div className="my-10 pl-10 pr-10">
       <h2 className="font-bold text-2xl">
         Let's Get Started
       </h2>
@@ -80,14 +80,14 @@ function Interview() {
             /> :
             <div>
               <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
-              <Button className="w-full" onClick={() => {setIsWebCamEnabled(true)}}>Enable Web Cam and Microphone</Button>
+              <Button className="w-full" style={{backgroundColor: "#4845D2", color: "white"}} onClick={() => {setIsWebCamEnabled(true)}}>Enable Web Cam and Microphone</Button>
             </div>
           }
         </div>
       </div>
       <div className="flex justify-end items-end">
         <Link to={`/interview/${params.interviewId}/start`}>
-          <Button>Start Interview</Button>
+          <Button style={{backgroundColor: "#4845D2", color: "white"}}>Start Interview</Button>
         </Link>
       </div>
     </div>

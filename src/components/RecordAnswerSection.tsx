@@ -5,7 +5,7 @@ import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import { toast } from "sonner";
 import { chatSession } from "../utils/GeminiAIModel";
-// import { useUser } from "@clerk/react";
+import { useUser } from "@clerk/react";
 import dayjs from "dayjs";
 import { supabase } from "../utils/supabase";
 import type { Question } from "../types/interview";
@@ -27,7 +27,7 @@ function RecordAnswerSection({
 }: RecordAnswerSectionProps) {
   const userAnswerRef = useRef<string>("");
 
-//   const { user } = useUser();
+  const { user } = useUser();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -84,20 +84,19 @@ function RecordAnswerSection({
     setLoading(true);
 
     const feedbackPrompt = `
-I have a question and an answer that I would like evaluated.
+                            I have a question and an answer that I would like evaluated.
 
-Please provide feedback on the answer, including:
-- rating (1-10)
-- feedback
+                            Please provide feedback on the answer, including:
+                            - rating (1-10)
+                            - feedback
 
-Return only JSON.
+                            Return only JSON.
 
-Question:
-${interviewQuestions?.[activeQuestionIndex]?.question}
+                            Question:
+                            ${interviewQuestions?.[activeQuestionIndex]?.question}
 
-Answer:
-${finalUserAnswer}
-`;
+                            Answer:
+                            ${finalUserAnswer}`;
 
     try {
       const result = await chatSession.sendMessage({
@@ -129,9 +128,7 @@ ${finalUserAnswer}
             userAns: finalUserAnswer,
             feedback: jsonFeedbackResp.feedback,
             rating: jsonFeedbackResp.rating,
-            userEmail:
-            //   user?.primaryEmailAddress?.emailAddress ??
-              "",
+            userEmail: user?.primaryEmailAddress?.emailAddress ?? "",
             createdAt: dayjs().format("DD-MM-YYYY")
           },
         ]);

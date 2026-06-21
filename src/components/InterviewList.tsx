@@ -1,4 +1,4 @@
-// import { useUser } from "@clerk/react"
+import { useUser } from "@clerk/react"
 import { useEffect, useState } from "react";
 import InterviewItemCard from "./InterviewItemCard";
 import { supabase } from "../utils/supabase";
@@ -6,13 +6,13 @@ import { Loader2 } from "lucide-react";
 import type { Interview } from "../types/interview";
 
 function InterviewList() {
-    // const {user} = useUser();
+    const {user} = useUser();
     const [interviewList, setInterviewList] = useState<Interview[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getInterviewList()
-    }, [])
+        user && getInterviewList()
+    }, [user])
 
     const getInterviewList = async () => {
         setLoading(true);
@@ -20,6 +20,10 @@ function InterviewList() {
         const { data, error } = await supabase
             .from("mockInterview")
             .select("*")
+            .eq(
+                "createdBy",
+                user?.primaryEmailAddress?.emailAddress ?? ""
+            )
             .order("id", { ascending: false });
     
         if (error) {

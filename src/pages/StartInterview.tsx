@@ -37,25 +37,25 @@ function StartInterview() {
     }
 
   return (
-    <div>
+    <div className="pl-10 pr-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <QuestionsSection interviewQuestions={questions} activeQuestionIndex={activeQuestionIndex} />
             <RecordAnswerSection interviewQuestions={questions} activeQuestionIndex={activeQuestionIndex} interviewData={interviewData} />
         </div>
         <div className="flex justify-end gap-6">
             {activeQuestionIndex > 0 && 
-                <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex -1)}>
+                <Button variant="outline" onClick={() => setActiveQuestionIndex(activeQuestionIndex -1)}>
                     Previous Question
                     </Button>
             }
             {activeQuestionIndex < questions?.length - 1 && 
-                <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>
+                <Button style={{backgroundColor: "#4845D2", color: "white"}} onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>
                     Next Question
                 </Button>
             }
             {activeQuestionIndex === questions?.length - 1 &&
                 <Link to={'/interview/' + interviewData?.mockId + "/feedback"}> 
-                    <Button>End Interview</Button>
+                    <Button style={{backgroundColor: "#4845D2", color: "white"}}>End Interview</Button>
                 </Link>
             }
         </div>
