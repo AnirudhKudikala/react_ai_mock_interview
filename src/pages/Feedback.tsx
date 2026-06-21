@@ -8,9 +8,10 @@ import { Loader2, ChevronsUpDown } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import { useNavigate, useParams } from 'react-router';
 import { supabase } from '../utils/supabase';
+import type { FeedbackItem } from '../types/interview';
 
 function Feedback() {
-    const [feedbackList, setFeedbackList] = useState([]);
+    const [feedbackList, setFeedbackList] = useState<FeedbackItem[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const params = useParams();

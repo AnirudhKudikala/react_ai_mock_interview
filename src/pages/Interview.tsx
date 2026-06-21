@@ -43,7 +43,7 @@ function Interview() {
       setIsvalidInterviewId(true)
     }
 
-    setInterviewData(data[0]);
+    setInterviewData(data?.[0]);
     console.log(data);
   }
 

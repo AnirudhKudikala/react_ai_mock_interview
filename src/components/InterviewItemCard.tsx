@@ -1,7 +1,12 @@
 import { Button } from '../components/ui/button'
 import { Link } from 'react-router'
+import type { Interview } from '../types/interview';
 
-function InterviewItemCard({interview}) {
+interface InterviewItemCardProps {
+  interview: Interview;
+}
+
+function InterviewItemCard({interview}: InterviewItemCardProps) {
   return (
     <div className='border shadow-sm rounded-lg p-3'>
         <h2 className='font-bold text-primary'>{interview?.jobPosition}</h2>

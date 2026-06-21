@@ -1,14 +1,14 @@
-import type { ReactNode } from "react";
+import { lazy, type ReactNode } from "react";
 
-import Dashboard from "../pages/Dashboard";
 import Questions from "../pages/Questions";
 import Upgrade from "../pages/Upgrade";
 import HowItWorks from "../pages/HowItWorks";
 import SignInPage from "../pages/SignInPage";
 import SignUpPage from "../pages/SignUpPage";
-import Interview from "../pages/Interview";
-import Feedback from "../pages/Feedback";
-import StartInterview from "../pages/StartInterview";
+const Interview = lazy(() => import("../pages/Interview"))
+const Dashboard = lazy(() => import("../pages/Dashboard"))
+const StartInterview = lazy(() => import("../pages/StartInterview"))
+const Feedback = lazy(() => import("../pages/Feedback"))
 
 export interface AppRoute {
     path: string;

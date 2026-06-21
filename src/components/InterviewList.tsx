@@ -1,12 +1,13 @@
-import { useUser } from "@clerk/react"
+// import { useUser } from "@clerk/react"
 import { useEffect, useState } from "react";
 import InterviewItemCard from "./InterviewItemCard";
 import { supabase } from "../utils/supabase";
 import { Loader2 } from "lucide-react";
+import type { Interview } from "../types/interview";
 
 function InterviewList() {
-    const {user} = useUser();
-    const [interviewList, setInterviewList] = useState([]);
+    // const {user} = useUser();
+    const [interviewList, setInterviewList] = useState<Interview[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ function InterviewList() {
         setInterviewList(data || []);
         setLoading(false);
     };
-    
+
     if (loading) {
         return (
             <div className="flex justify-center items-center py-20">

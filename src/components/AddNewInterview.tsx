@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useUser } from "@clerk/react";
 import { LoaderCircle } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
-import moment from "moment";
+import dayjs from "dayjs";
 
 import { Button } from "./ui/button";
 import {
@@ -71,7 +71,7 @@ function AddNewInterview() {
                 jobDesc: jobDescription,
                 jobExperience,
                 createdBy: user?.primaryEmailAddress?.emailAddress ?? "",
-                createdAt: moment().format("DD-MM-YYYY"),
+                createdAt: dayjs().format("DD-MM-YYYY")
             },
             ])
             .select("mockId");

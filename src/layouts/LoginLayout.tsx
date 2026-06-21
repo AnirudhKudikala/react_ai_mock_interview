@@ -1,4 +1,11 @@
-export default function LoginLayout({children}) {
+import type React from "react";
+
+interface MyComponentProps {
+    children: React.ReactNode;
+    // add other props here if needed
+}
+
+export default function LoginLayout({children}: MyComponentProps) {
     return (
         <>
             <section className="bg-white">

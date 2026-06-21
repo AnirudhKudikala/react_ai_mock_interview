@@ -1,6 +1,12 @@
+import type React from 'react';
 import Header from '../components/Header'
 
-function DashboardLayout({children}) {
+interface MyComponentProps {
+    children: React.ReactNode;
+    // add other props here if needed
+}
+
+function DashboardLayout({children}: MyComponentProps) {
   return (
     <div>
         <Header />

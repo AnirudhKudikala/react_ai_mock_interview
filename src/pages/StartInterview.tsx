@@ -4,10 +4,12 @@ import RecordAnswerSection from "../components/RecordAnswerSection";
 import { Button } from "../components/ui/button"
 import { Link, useParams } from "react-router";
 import { supabase } from "../utils/supabase";
+import type { Interview, Question,  } from "../types/interview";
 
 function StartInterview() {
-    const [interviewData, setInterviewData] = useState();
-    const [questions, setQuestions] = useState();
+    const [interviewData, setInterviewData] = useState<Interview | null>(null);
+
+    const [questions, setQuestions] = useState<Question[]>([]);
     const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
     const params = useParams();
     useEffect(() => {
