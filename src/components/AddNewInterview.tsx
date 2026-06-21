@@ -150,12 +150,12 @@ function AddNewInterview() {
                 <div className="flex gap-5 justify-end">
                   <Button
                     type="button"
-                    variant="ghost"
+                    variant="outline"
                     onClick={() => setOpenDialog(false)}
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" variant="outline" className="" disabled={isLoading}>
+                  <Button type="submit" style={{backgroundColor: "#4845D2", color: "white"}} disabled={isLoading}>
                     {isLoading ? (
                       <>
                         <LoaderCircle className="animate-spin" />

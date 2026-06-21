@@ -6,7 +6,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   const { isSignedIn } = useAuth();
 
   if (!isSignedIn) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/sign-up" replace />;
   }
 
   return children;

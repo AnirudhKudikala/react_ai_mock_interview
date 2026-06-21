@@ -30,37 +30,37 @@ const routesConfig: AppRoute[] = [
     {
         path: "/",
         element: <Dashboard />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/questions",
         element: <Questions />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/upgrade",
         element: <Upgrade />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/how-it-works",
         element: <HowItWorks />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/interview/:interviewId",
         element: <Interview />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/interview/:interviewId/feedback",
         element: <Feedback />,
-        isProtected: false,
+        isProtected: true,
     },
     {
         path: "/interview/:interviewId/start",
         element: <StartInterview />,
-        isProtected: false,
+        isProtected: true,
     }
 ];
 

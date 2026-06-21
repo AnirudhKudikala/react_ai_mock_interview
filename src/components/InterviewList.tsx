@@ -2,29 +2,39 @@ import { useUser } from "@clerk/react"
 import { useEffect, useState } from "react";
 import InterviewItemCard from "./InterviewItemCard";
 import { supabase } from "../utils/supabase";
+import { Loader2 } from "lucide-react";
 
 function InterviewList() {
     const {user} = useUser();
     const [interviewList, setInterviewList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getInterviewList()
     }, [])
 
-    const getInterviewList = async() => {
+    const getInterviewList = async () => {
+        setLoading(true);
+    
         const { data, error } = await supabase
-                                    .from("mockInterview")
-                                    .select("*")
-                                    // .eq("createdBy", user.primaryEmailAddress?.emailAddress)
-                                    .order("id", { ascending: false });
-
-                                    if (error) {
-                                        console.error("error", error);
-                                    }
-
-                                    console.log("data", data);
-
-        setInterviewList(data);
+            .from("mockInterview")
+            .select("*")
+            .order("id", { ascending: false });
+    
+        if (error) {
+            console.error("error", error);
+        }
+    
+        setInterviewList(data || []);
+        setLoading(false);
+    };
+    
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center py-20">
+                <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
+        );
     }
 
     return (

@@ -1,51 +1,52 @@
-import { UserButton } from '@clerk/react'
-import { Link, useLocation } from 'react-router'
+import { UserButton } from "@clerk/react";
+import { Link, NavLink } from "react-router";
 
 function Header() {
-  const { pathname } = useLocation();
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `transition-all cursor-pointer hover:text-[#4845D2] hover:font-bold ${
+      isActive ? "text-[#4845D2] font-bold" : ""
+    }`;
 
   return (
-    <div className='flex p-4 items-center justify-between bg-secondary shadow-sm'>
-        <Link to='/'>
-            <img src={"/logo.svg"} width={160} height={100} alt='logo'/>
-        </Link>
-        <ul className='hidden md:flex gap-6'>
-            <li 
-                className={`hover:text-primary hover:font-bold transition-all cursor-pointer 
-                ${pathname === "/" && "text-primary font-bold"}`}
-            >
-                <Link to='/'>
-                    Dashboard
-                </Link>
-            </li>
-            <li 
-                className={`hover:text-primary hover:font-bold transition-all cursor-pointer 
-                ${pathname === "/questions" && "text-primary font-bold"}`}
-            >
-                <Link to='/questions'>
-                    Questions
-                </Link>
-            </li>
-            <li 
-                className={`hover:text-primary hover:font-bold transition-all cursor-pointer 
-                ${pathname === "/upgrade" && "text-primary font-bold"}`}
-            >
-                <Link to='/upgrade'>
-                    Upgrade
-                </Link>
-            </li>
-            <li 
-                className={`hover:text-primary hover:font-bold transition-all cursor-pointer 
-                ${pathname === "/how" && "text-primary font-bold"}`}
-            >
-                <Link to='/how-it-works'>
-                    How it works?
-                </Link>
-            </li>
-        </ul>
-        <UserButton />
+    <div className="flex p-4 items-center justify-between bg-secondary shadow-sm">
+      <Link to="/">
+        <img
+          src="/React_AI_Mock_Interview_Logo.png"
+          width={60}
+          height={40}
+          alt="logo"
+        />
+      </Link>
+
+      <ul className="hidden md:flex gap-6">
+        <li>
+          <NavLink to="/" end className={navLinkClass}>
+            Dashboard
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/questions" className={navLinkClass}>
+            Questions
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/upgrade" className={navLinkClass}>
+            Upgrade
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/how-it-works" className={navLinkClass}>
+            How it works?
+          </NavLink>
+        </li>
+      </ul>
+
+      <UserButton />
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
