@@ -42,6 +42,20 @@ function InterviewList() {
         );
     }
 
+    if (interviewList.length === 0) {
+        return (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <h2 className="text-2xl font-semibold text-gray-700">
+              No Interviews Yet
+            </h2>
+            <p className="mt-2 text-gray-500 max-w-md">
+              You haven't created any mock interviews yet. Start a new interview to
+              practice your skills and receive AI-powered feedback.
+            </p>
+          </div>
+        );
+    }
+
     return (
         <div>
             <h2 className="font-medium text-xl">Previous Interviews</h2>
